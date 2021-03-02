@@ -5,6 +5,71 @@
 *{
     padding: 0;
     margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+:root{
+    --font-primary: "Baloo da 2", sans-serif;
+    --font-secundary: "josefin Slab" , sans-serif;
+    --font-action:"Muli", sans-serif;
+}
+.hamburguer{
+    /*background-color: red;*/
+    width: 2rem;
+    height: 2rem;
+    position: fixed;
+    z-index: 100;
+    right: 2rem;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+.show-menu .hamburguer{
+    right: 18rem;
+}
+.line{
+    width: 100%;
+    height: .2rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0.1rem 0.1rem 1px #000;
+    transition: transform 1s;
+}
+.show-menu #line2{
+    opacity: 0;
+    visibility: hidden;
+}
+.show-menu #line1{
+    transform: rotate(-45deg) translate(.8rem, 1.47rem);
+}
+.show-menu #line3{
+    transform: rotate(45deg) translate(.7rem, -1.55rem);
+}
+.hamburguer span{
+    position: absolute;
+    left: 5rem;
+    height: 2rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: -6rem;
+    background-color: floralwhite;
+    font-family: var(--font-action);
+    opacity: 0;
+}
+.hamburguer span::before{
+    content: "";
+    position: absolute;
+    border-right: .5rem solid floralwhite;
+    border-top: .5rem solid transparent;
+    border-left: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+    left: -1rem;
+}
+.show-menu .hamburguer:hover span{
+    opacity: 1;
 }
 header{
     width: 100%;
@@ -41,32 +106,24 @@ header{
 .banner h1{
     color: white;
     font-size: 3.5rem;
-    font-family: "Baloo da 2", sans-serif;
+    font-family: var(--font-primary);
     font-weight: 300;
     line-height: 6rem;
     text-shadow: .3rem .2rem 2px rgba(0,0,0,0.4);
     opacity: 0;
     animation: moveBanner 1s 0.5s forwards;
 }
-@keyframes moveBanner{
-    0%{
-        transform: translateY(10rem) rotateY(-30deg);
-    }
-    100%{
-        transform: translateY(0) rotateY(0);
-        opacity: 1;
-    }
-}
+
 .banner p{
     color: seashell;
-    font-family: "josefin Slab" , sans-serif;
+    font-family: var(--font-secundary);
     font-size: 2rem;
     text-shadow: .3rem .2rem rgba(0,0,0,0.4);
     opacity: 0;
     animation: moveBanner 1s 0.7s forwards;
 }
 .banner button{
-    font-family: "Muli", sans-serif;
+    font-family: var(--font-action);
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     color: rgb(240, 238, 255);
@@ -82,7 +139,82 @@ header{
     opacity: 0;
     animation: moveBanner 1s 0.9s forwards;
 }
+@keyframes moveBanner{
+    0%{
+        transform: translateY(10rem) rotateY(-30deg);
+    }
+    100%{
+        transform: translateY(0) rotateY(0);
+        opacity: 1;
+    }
+}
+
 .banner button:hover{
     opacity: 0.5;
     color: black;
+}
+.sidebar{
+    width: 20rem;
+    height: 100vh;
+    background: #B993D6; 
+    background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6); 
+    background: linear-gradient(to right, #8CA6DB, #B993D6); 
+    position: fixed;
+    top: 0;
+    right: -20rem;
+    transition: all 1s;
+}
+.show-menu .sidebar{
+    right: 0;
+}
+.menu{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.menu-item{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.menu-link{
+    font-family: var(--font-action);
+    font-size: 1.6rem;
+    color: cornsilk;
+    transition: color 1s;
+}
+.menu-link:hover{
+    color: rgb(119, 33, 177);
+}
+.social-media{
+    position: absolute;
+    bottom: 6rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.social-media i{
+    color: floralwhite;
+    background-color: rgb(154, 63, 214);
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color 1s;
+}
+.social-media i:hover{
+    color: rgb(130, 47, 163);
+    background-color: rgb(255, 255, 255);
+    animation: social 1s forwards;
+}
+@keyframes social{
+    0%{
+        transform:rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }
